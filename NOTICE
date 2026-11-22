@@ -1,0 +1,5 @@
+MetaCare Ember
+Copyright 2026 Metacare.ai Inc.
+
+This product fine tunes IBM Granite 4.0 models (Apache License 2.0, Copyright IBM Corp.) and uses Kokoro 82M
+(Apache License 2.0) and OpenAI Whisper models (MIT License) to make its training transcripts.

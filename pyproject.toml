@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "metacare-ember"
+version = "0.1.0"
+description = "Make, train, score and export the small open model behind MetaCare Ember, a visit scribe that runs in a phone's browser."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Metacare.ai Inc.", email = "info@metacare.ai" }]
+requires-python = ">=3.11"
+# The core install has one dependency so the checks and tests run on any laptop, with no GPU.
+dependencies = ["pyyaml>=6.0"]
+
+[project.optional-dependencies]
+train = ["torch>=2.5", "transformers>=4.57,<5", "peft>=0.17", "trl>=0.23", "datasets>=4.0", "accelerate>=1.10"]
+speech = ["torch>=2.5", "torchaudio>=2.5", "transformers>=4.57,<5", "kokoro>=0.9.4", "soundfile>=0.12", "numpy>=1.26"]
+export = ["torch>=2.5", "transformers>=4.57,<5", "safetensors>=0.4", "huggingface_hub>=0.26", "onnx>=1.19", "onnxruntime>=1.23", "numpy>=1.26"]
+dev = ["pytest>=8.3", "ruff>=0.13"]
+
+[project.urls]
+Homepage = "https://metacare.ai"
+Source = "https://github.com/metacareforyou/metacare-ember"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 130
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
